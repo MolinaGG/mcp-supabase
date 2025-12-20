@@ -19,8 +19,11 @@ export async function getConjuntura({ termo }) {
   const { data, error } = await query;
 
   if (error) {
+    console.error('❌ Supabase error:', error);
     throw new Error(error.message);
   }
+
+  console.log('✅ Supabase data:', data);
 
   return data?.[0] || null;
 }
