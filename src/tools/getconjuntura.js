@@ -18,7 +18,9 @@ export async function getConjuntura({ termo }) {
 
   const { data, error } = await query;
 
-  if (error) throw new Error(error.message);
+  if (error) {
+    throw new Error(error.message);
+  }
 
   return data?.[0] || null;
 }
