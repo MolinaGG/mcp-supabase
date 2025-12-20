@@ -12,7 +12,7 @@ app.post('/mcp', async (req, res) => {
     const { tool, args } = req.body;
 
     if (tool === 'get_conjuntura') {
-      const result = await getConjuntura(args);
+      const result = await getConjuntura(args || {});
       return res.json({ result });
     }
 
@@ -22,6 +22,7 @@ app.post('/mcp', async (req, res) => {
   }
 });
 
-app.listen(process.env.PORT, () => {
-  console.log(`✅ MCP Server rodando na porta ${process.env.PORT}`);
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`✅ MCP Server rodando na porta ${port}`);
 });
